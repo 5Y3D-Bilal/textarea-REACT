@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css'
+import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -71,7 +71,7 @@ function Textarea() {
   const lighttheme = () => {
     document.getElementById("themes").style.backgroundColor = "white";
     document.getElementById("themes").style.color = "black";
-    toast.warn('Theme Changed To Light Mode', {
+    toast.warn("Theme Changed To Light Mode", {
       position: "bottom-right",
       autoClose: 900,
       hideProgressBar: false,
@@ -80,13 +80,13 @@ function Textarea() {
       draggable: true,
       progress: undefined,
       theme: "dark",
-      });
+    });
   };
 
   const draktheme = () => {
     document.getElementById("themes").style.backgroundColor = "black";
     document.getElementById("themes").style.color = "white";
-    toast.error('Theme Changed To Dark Mode', {
+    toast.error("Theme Changed To Dark Mode", {
       position: "bottom-left",
       autoClose: 900,
       hideProgressBar: false,
@@ -95,11 +95,11 @@ function Textarea() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      });
+    });
   };
   return (
     <>
-      <div className="container textarea" >
+      <div className="container textarea">
         <div className=" mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">
             Text Editer
@@ -123,9 +123,32 @@ function Textarea() {
           <button className="btn btn-primary" onClick={copy}>
             Copy
           </button>
-          <button className="btn btn-primary" onClick={lighttheme}>light theme</button>
-          <button className="btn btn-primary" onClick={draktheme}>dark theme</button>
+          <button className="btn btn-primary" onClick={lighttheme}>
+            light theme
+          </button>
+          <button className="btn btn-primary" onClick={draktheme}>
+            dark theme
+          </button>
           <ToastContainer />
+          <h1>Text Counter</h1>
+          <p>
+            {
+              text.split(" ").filter((d) => {
+                return d.length !== 0;
+              }).length
+            }{" "}
+            words {text.length} letters
+          </p>
+          <h1>read time</h1>
+          <p>
+            {0.08 *
+              text.split(" ").filter((d) => {
+                return d.length !== 0;
+              }).length}
+          </p>
+
+          <h1>Preview</h1>
+          {text.length > 0 ? text : "write something"}
         </div>
       </div>
     </>
